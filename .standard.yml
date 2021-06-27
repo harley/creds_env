@@ -1,0 +1,7 @@
+---
+ignore:
+  - 'spec/creds_env/rails_spec.rb':
+    - Style/TrailingCommaInHashLiteral
+    - Lint/MissingCopEnableDirective
+  - 'spec/creds_env_spec.rb':
+    - Lint/ConstantDefinitionInBlock
