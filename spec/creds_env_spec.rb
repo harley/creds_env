@@ -13,7 +13,7 @@ RSpec.describe CredsEnv do
 
     RailsTestApp.initialize!
 
-    update_credentials_yml_enc({})
+    CredentialsHelper.update_credentials_yml_enc({})
   end
 
   after do
@@ -43,14 +43,15 @@ RSpec.describe CredsEnv do
     end
 
     it "sets up Rails creds correctly" do
-      update_credentials_yml_enc(sample_creds)
-      expect(Rails.application.credentials.config).to eq(sample_creds)
+      CredentialsHelper.update_credentials_yml_enc(sample_creds)
+      expect(Rails.application.credentials.read).to eq sample_creds.to_yaml
     end
   end
 
   describe ".load" do
     before do
-      update_credentials_yml_enc(sample_creds)
+      CredentialsHelper.update_credentials_yml_enc(sample_creds)
+      # manually loading before
       CredsEnv.load(Rails.application)
     end
 
@@ -62,12 +63,6 @@ RSpec.describe CredsEnv do
 
     it "ignores variables like secret_key_base" do
       expect(ENV["secret_key_base"]).to eq nil
-    end
-  end
-
-  def update_credentials_yml_enc(conf)
-    Rails.application.credentials.change do |path|
-      File.open(path, "w") { |f| f.write(conf.to_yaml) }
     end
   end
 end
