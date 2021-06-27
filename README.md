@@ -1,28 +1,39 @@
 # CredsEnv
 
-Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/creds_env`. To experiment with that code, run `bin/console` for an interactive prompt.
+`creds_env` aims to:
 
-TODO: Delete this and the text above, and describe your gem
+- help you embrace Rails 6+ credentials management system (if you don't think it's better than sharing `.env.*` files , see if this [this great article](https://betterprogramming.pub/how-to-migrate-environment-variables-env-to-rails-credentials-d3f48164f7c8?gi=71f507360259) has a good point or two).
+- maintain dotenv style coding with `ENV["SOME_KEY"]` because it's shorter (than `Rails.application.credentials`) and familiar with developers of most frameworks.
 
 ## Installation
 
-Add this line to your application's Gemfile:
-
-```ruby
-gem 'creds_env'
-```
+Run `bundle add creds_env` to the gem to your Gemfile.
 
 And then execute:
 
     $ bundle install
 
-Or install it yourself as:
-
-    $ gem install creds_env
+Check past versions at https://rubygems.org/gems/creds_env
 
 ## Usage
 
-TODO: Write usage instructions here
+Any ALL_CAPS key names in your encrpted credentials will be copied over as ENV vars.
+
+For example:
+
+    bin/rails credentials:edit
+
+Add DATABASE_URL like this:
+
+    ```yaml
+    DATABASE_URL: postgres://localhost:5432/example_development
+    ```
+
+Check in `bin/rails console`:
+
+    ```rb
+    puts ENV["DATABASE_URL"] # => postgres://localhost:5432/example_development
+    ```
 
 ## Development
 
@@ -32,7 +43,7 @@ To install this gem onto your local machine, run `bundle exec rake install`. To 
 
 ## Contributing
 
-Bug reports and pull requests are welcome on GitHub at https://github.com/[USERNAME]/creds_env. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/creds_env/blob/main/CODE_OF_CONDUCT.md).
+Bug reports and pull requests are welcome on GitHub at https://github.com/harley/creds_env. This project is intended to be a safe, welcoming space for collaboration, and contributors are expected to adhere to the [code of conduct](https://github.com/[USERNAME]/creds_env/blob/main/CODE_OF_CONDUCT.md).
 
 ## License
 
