@@ -23,7 +23,7 @@ RSpec.describe CredsEnv::Railtie do
         secret_key_base: "abc123",
         DATABASE_URL: "postgres://localhost:5432/example_development",
         AWS_ACCESS_KEY_ID: "aws123",
-        AWS_SECRET_ACCESS_KEY: "aws123",
+        AWS_SECRET_ACCESS_KEY: "aws123"
       }
     end
 

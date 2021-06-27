@@ -32,6 +32,9 @@ Gem::Specification.new do |spec|
 
   spec.add_dependency "rails", "> 6.0"
 
+  spec.add_development_dependency "rspec", "~> 3.10.0"
+  spec.add_development_dependency "standard", "~> 1.1.2"
+
   # For more information and examples about making a new gem, checkout our
   # guide at: https://bundler.io/guides/creating_gem.html
 end
